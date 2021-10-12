@@ -1,35 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  SafeAreaView,
-  StatusBar,
-  View,
   StyleSheet,
-  Button,
+  View,
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import LayoutScreen from './screens/layoutScreen';
 
 import SplashScreen from './screens/splashScreen';
-import LoginScreen from './screens/loginScreen';
-import DiscoverScreen from './screens/discoverScreen';
-
-const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
   return (
-    <SafeAreaView style={styles.backgroundStyle}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home">
-            {props => <SplashScreen loggedIn />}
-          </Stack.Screen>
-          <Stack.Screen name="LogIn" component={LoginScreen} />
-          <Stack.Screen name="Discover" component={DiscoverScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+    <View style={styles.backgroundStyle}>
+      {loggedIn ? <LayoutScreen /> : <SplashScreen handleLogIn={setLoggedIn} />}
+    </View>
   );
 }
 

@@ -5,11 +5,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { BottomNavBar } from "../components/BottomNavBar";
 import { NavBarProps } from "../constants/types";
 
-export default function DiscoverScreen(props: NavBarProps) {
+export default function ProfileScreen(props: NavBarProps) {
   return (
     <View style={styles.viewStyle}>
       <SafeAreaView>
-        <Text>Discover Screen!</Text>
+        <Text>Profile Screen!</Text>
       </SafeAreaView>
       <BottomNavBar active={props.active} setActive={props.setActive} />
     </View>

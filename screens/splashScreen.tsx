@@ -10,14 +10,12 @@ import {
 import theme from "../constants/theme";
 
 interface SplashScreenProps {
-    loggedIn: boolean;
+  handleLogIn: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function SplashScreen({ loggedIn }: SplashScreenProps) {
+export default function SplashScreen(props: SplashScreenProps) {
 
-    useEffect(() => {
-        
-    }, [loggedIn]);
+  
 
   return (
     <View style={styles.viewStyle}>
@@ -25,7 +23,7 @@ export default function SplashScreen({ loggedIn }: SplashScreenProps) {
       <View style={styles.mainBlock} />
       <Image style={styles.image} source={require("../assets/BoneLogo.png")} />
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={() => props.handleLogIn(true)}>
           <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => {}}>
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
     height: 125,
     transform: [
       { rotateZ: "-30deg" },
-      { translateX: -40 },
+      { translateX: -15 },
       { translateY: -80 },
     ],
   },
@@ -71,7 +69,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: "90%",
-    marginTop: 75,
+    marginTop: 125,
     alignItems: "center",
   },
   button: {
